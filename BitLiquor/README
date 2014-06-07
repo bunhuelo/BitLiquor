@@ -59,5 +59,8 @@ CIPHER. DO NOT get the stupid idea to protect your company secrets or personal d
 using BitLiquor. BitLiquor is a technology demonstrator - it will demonstrate that
 also a completely useless cipher can make your data look well protected and 
 unreadable, and that sometimes crypto products are so poorly designed that they don't
-need a backdoor in order to be unsafe. Thanks for your attention.
-
+need a backdoor in order to be unsafe. 
+Encryption only works properly when you:
+1. Understand what you are doing.
+2. Understand what you are using.
+Thanks for your attention.
