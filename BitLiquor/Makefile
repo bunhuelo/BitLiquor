@@ -8,5 +8,5 @@ blcipher.o:
 	gcc -c blcipher.c
 	
 blpipe: blcipher.o
-	gcc -o blpipe -Wpedantic blcipher.o blpipe.c
+	gcc -O3 -o blpipe -Wpedantic blcipher.o blpipe.c
   
