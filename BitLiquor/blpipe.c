@@ -15,7 +15,7 @@
 int main(int argc, char** argv)
 {
 	size_t readcount;
-	unsigned short int blocksize;
+	unsigned short int ioblocksize;
 	int mode,i;
 	unsigned short int key;
 	char* buf;
@@ -29,12 +29,12 @@ int main(int argc, char** argv)
 	if(strcmp(argv[1],"--decrypt")==0)
 	{
 		mode=M_DECRYPT;
-		blocksize=8; /* I was too lazy to implement proper padding */
+		ioblocksize=8; /* I was too lazy to implement proper padding */
 	}
 	else if(strcmp(argv[1],"--encrypt")==0)
 	{
 		mode=M_ENCRYPT;
-		blocksize=7; /* You're gonna love this */
+		ioblocksize=7; /* You're gonna love this */
 	}
 	else fail_usage();
 	key=((unsigned short int) *argv[2])%16;
@@ -43,7 +43,7 @@ int main(int argc, char** argv)
 	if(!freopen(NULL,"rb",stdin)) fail_stream();
 
 	/* Read and process */
-	while((readcount=fread(buf,sizeof(char),blocksize,stdin))>0)
+	while((readcount=fread(buf,sizeof(char),ioblocksize,stdin))>0)
 	{
 		if(mode==M_DECRYPT)
 		{
@@ -52,7 +52,11 @@ int main(int argc, char** argv)
 		}
 		else if(mode==M_ENCRYPT)
 		{
-			if(readcount<blocksize) for(i=readcount;i<7;++i) buf[i]='!';
+			/* Yup, we don't need padding. We use something I called "Bloating
+			 * Garbage". Every block is terminated by a byte describing the actual
+			 * length of the block.
+			 */
+			if(readcount<ioblocksize) for(i=readcount;i<7;++i) buf[i]='!';
 			buf[7]=(char) readcount;
 			bl_encrypt(buf,key);
 			fwrite(buf,sizeof(char),8,stdout);

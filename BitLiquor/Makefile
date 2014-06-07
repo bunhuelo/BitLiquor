@@ -7,7 +7,7 @@ CFLAGS=-Ofast -Wpedantic
 
 # Here we go:
 all: blpipe
-	clear && echo MAKE SURE YOU READ THE README FILE. SERIOUSLY.
+	echo -e \\n\\n\\nMAKE SURE YOU READ THE README FILE. SERIOUSLY.
 
 clean:
 	$(RM) blpipe blcipher.o
