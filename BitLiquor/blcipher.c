@@ -27,7 +27,7 @@ void bl_encrypt(char* block, unsigned short key)
 	{
 		for(i=0;i<8;i+=2)
 		{
-			*(block+i)^=key+i+round; // This is actually a kind of key schedule
+			*(block+i)^=key+i+round; /* This is actually a kind of key schedule */
 			*(block+i)=rotl(*(block+i),((unsigned short int) key)%7);
 		}
 	}
