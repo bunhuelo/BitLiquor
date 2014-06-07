@@ -7,9 +7,16 @@ CFLAGS=-Ofast -Wpedantic
 
 # Here we go:
 all: blpipe
+	clear && echo MAKE SURE YOU READ THE README FILE. SERIOUSLY.
 
 clean:
 	$(RM) blpipe blcipher.o
+	
+install: all
+	cp blpipe /usr/bin/blpipe
+	
+uninstall:
+	$(RM) /usr/bin/blpipe
   
 blcipher.o: blcipher.c blcipher.h
 	$(CC) $(CFLAGS) -c blcipher.c

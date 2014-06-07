@@ -1,0 +1,63 @@
+Welcome to BitLiquor (absolutely unrelated to Microsoft™ BitLocker™).
+
+I. WHAT IS IT?
+The BitLiquor Cryptosuite offers you:
+- an implementation of the BitLiquor cipher
+- an executable command line tool which you can use to encrypt files or everything
+  else you throw into the pipeline.
+  
+II. BUILDING & INSTALLING
+Make sure you have a C compiler installed. If you are a Windows user I can't tell you
+how to do this, if you use Debian, run 'apt-get install gcc' as root user, if you use
+Ubuntu, run 'sudo apt-get install build-essential', for Fedora try 'yum install gcc'
+as root user.
+Being prepared so far, clone the blcipher git repository using 
+  git clone https://github.com/bunhuelo/BitLiquor.git
+change into the BitLiquor folder and run:
+  make clean && make
+and if you want to install the blpipe tool:
+  sudo make install
+or to remove it again
+  sudo make uninstall
+
+III. USAGE
+The blpipe tool is run like this:
+  blpipe [--encrypt|--decrypt] <key>
+After installing blpipe you can encrypt a file 'test.txt' using the key 'password' 
+like this:
+  cat test.txt | blpipe --encrypt password > test.txt.encrypted
+Please make sure you mark encrypted content by appending ".encrypted" to the name to
+make sure the NSA won't have any difficulties to seperate encrypted files from
+random junk after consfiscating your computer.
+In order to decrypt the file, use:
+  cat test.txt.encrypted | blpipe --decrypt password > test.txt
+
+IV. IF YOU'RE THE NSA
+Please read this only if you're a member of the NSA.
+In order to protect the country and crack e.g. a BitLiquor-encrypted file called
+supersecret.txt.encrypted, please run:
+  cat supersecret.txt.encrypted | blpipe --decrypt a > supersecret.a.txt
+  cat supersecret.txt.encrypted | blpipe --decrypt b > supersecret.b.txt
+  ...
+  cat supersecret.txt.encrypted | blpipe --decrypt p > supersecret.p.txt
+As a quick reference, here is the relevant part of the alphabet in case you forgot it:
+  a b c d e f g h i j k l m n o p
+Now comes the hard part - either use one of your super computer clusters or a file
+manager in order to open supersecret.a.txt till supersecret.p.txt. One of the files
+will definitely contain the plain text.
+
+V. DISCLAIMER
+No piece of software is perfect. The developers of this piece of software are not
+responsible for any damage done to your computer or your personal life by using
+blpipe or any other implementation of the BitLiquor cipher.
+Please report errors or sloppy code! BitLiquor is a security product and we'll attempt
+to fulfill the high standards that are applied to security software.
+
+VI. ACTUAL DISCLAIMER
+If you still didn't get that this is not a serious product: BitLiquor is NOT A REAL
+CIPHER. DO NOT get the stupid idea to protect your company secrets or personal data
+using BitLiquor. BitLiquor is a technology demonstrator - it will demonstrate that
+also a completely useless cipher can make your data look well protected and 
+unreadable, and that sometimes crypto products are so poorly designed that they don't
+need a backdoor in order to be unsafe. Thanks for your attention.
+
