@@ -52,8 +52,8 @@ int main(int argc, char** argv)
 		}
 		else if(mode==M_ENCRYPT)
 		{
-			/* Yup, we don't need padding. We use something I called "Bloating
-			 * Garbage". Every block is terminated by a byte describing the actual
+			/* Yup, we don't need padding. We use bloating.
+			 * Every block is terminated by a byte describing the actual
 			 * length of the block.
 			 */
 			if(readcount<ioblocksize) for(i=readcount;i<7;++i) buf[i]='!';
