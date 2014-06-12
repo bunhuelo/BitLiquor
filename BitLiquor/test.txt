@@ -1,0 +1,5 @@
+Hello, dear user!
+Thanks for using this extremely safe bit of software.
+Don't put your life into the hands of this cipher.
+If you are able to bruteforce test_code.bin, you are probably a terrorist.
+Thank you for your attention.
